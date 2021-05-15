@@ -1,6 +1,79 @@
-input {
-  width:50px;
+* {
+  margin: 0;
+  padding: 0;
 }
-ul {
-  list-style: none;
+header {
+  height: 70px;
+  background-color: antiquewhite;
+}
+main {
+  height: calc(100vh - 105px);
+  background-color: cornsilk;
+}
+.answer {
+  height: 250px;
+  background-color: darkmagenta;
+}
+.response {
+  height: calc(100% - 800px);
+  background-color: rgb(124, 125, 139);
+}
+li {
+  font-size: 40px;
+  text-align: center;
+}
+.action {
+  height: 550px;
+  background-color: rgb(37, 172, 37);
+}
+.attack {
+  height: 250px;
+  display: flex;
+}
+.attacks {
+  width: 80%;
+  height: 200px;
+  margin-top: 25px;
+  margin-left: 10px;
+  display: flex;
+  background-color: hotpink;
+  justify-content: space-around;
+}
+.attacks div {
+  width: 19%;
+  margin: 15px 0;
+  text-align: center;
+  font-size: 70px;
+  line-height: 170px;
+  background-color: rgb(219, 202, 231);
+}
+.attack-button {
+  width: 20%;
+  text-align: center;
+  line-height: 200px;
+}
+.attack-button button {
+  width: 50%;
+  height: 50px;
+}
+.numbers {
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.numbers div {
+  width: 19%;
+  margin-bottom: 3px;
+  background-color: darkolivegreen;
+  font-size: 70px;
+  text-align: center;
+  line-height: 140px;
+}
+.numbers .active {
+  background-color: lawngreen;
+}
+footer {
+  height: 35px;
+  background-color: burlywood;
 }
