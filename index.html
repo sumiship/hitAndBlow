@@ -7,12 +7,36 @@
     <link rel="icon" href="船2.png" />
   </head>
   <body>
-    <header></header>
+    <header>
+    </header>
     <main id="app">
       <div class="answer">
+        <div v-if="!isFinished" class="putAnswer" @click="viewAns()">
+          答えを見る
+        </div>
+        <div v-if="isFinished" class="putAnswer">{{answer}}</div>
+        <div class="restart" @click="restart()">restart</div>
       </div>
       <div class="response">
-        <ul></ul>
+        <div class="resTable">
+          <div class="thead">
+            <div>数字</div>
+            <div>Hit</div>
+            <div>Blow</div>
+          </div>
+          <div class="tbody">
+            <div class="record" v-for="(respon, index) in res" :key="index">
+              <div id="recordNum">
+                <div>{{respon[0]}}</div>
+                <div>{{respon[1]}}</div>
+                <div>{{respon[2]}}</div>
+                <div>{{respon[3]}}</div>
+              </div>
+              <div>{{respon[4]}}</div>
+              <div>{{respon[5]}}</div>
+            </div>
+          </div>
+        </div>
         <h1></h1>
       </div>
       <div class="action">
@@ -35,7 +59,7 @@
           <div
             v-for="num in numList"
             :key="num.num"
-            :class="{active: num.able}"
+            :class="{selected: num.num==selectedNum,active: num.able}"
             @click="selectNum(num.num)"
           >
             {{num.num}}

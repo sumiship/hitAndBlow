@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 header {
   height: 70px;
@@ -13,15 +14,63 @@ main {
 .answer {
   height: 250px;
   background-color: darkmagenta;
+  display: flex;
+}
+.putAnswer {
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 120px;
+  line-height: 250px;
+  background-color: lightcoral;
+}
+.restart {
+  background-color: lavender;
+  width: 150px;
+  font-size: 40px;
+  line-height: 250px;
+  text-align: center;
 }
 .response {
   height: calc(100% - 800px);
   background-color: rgb(124, 125, 139);
+  padding-top: 40px;
 }
-li {
-  font-size: 40px;
+.resTable {
+  width: 600px;
+  margin: 0 auto;
   text-align: center;
+  border: solid rgb(189, 62, 93) 2px;
+  font-size: 40px;
 }
+.thead {
+  display: flex;
+  border: solid rgb(189, 62, 93) 2px;
+}
+.thead div {
+  width: 100px;
+}
+.thead div:first-child {
+  width: 400px;
+  padding-right: 80px;
+}
+.record {
+  display: flex;
+}
+.record:nth-child(n + 2) {
+  border-top: solid whitesmoke 1px;
+}
+.record div {
+  width: 100px;
+}
+#recordNum {
+  display: flex;
+  width: 400px;
+}
+#recordNum div {
+  width: 80px;
+}
+
 .action {
   height: 550px;
   background-color: rgb(37, 172, 37);
@@ -72,6 +121,10 @@ li {
 }
 .numbers .active {
   background-color: lawngreen;
+}
+.numbers .selected {
+  outline: 10px solid khaki;
+  outline-offset: -10px;
 }
 footer {
   height: 35px;
