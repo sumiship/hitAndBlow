@@ -4,15 +4,18 @@
   box-sizing: border-box;
 }
 header {
-  height: 70px;
+  height: 40px;
   background-color: antiquewhite;
+  font-size: 30px;
+  text-align: center;
+  line-height: 40px;
 }
 main {
-  height: calc(100vh - 105px);
+  height: calc(100vh - 75px);
   background-color: cornsilk;
 }
 .answer {
-  height: 250px;
+  height: 50px;
   background-color: darkmagenta;
   display: flex;
 }
@@ -20,39 +23,39 @@ main {
   width: 800px;
   margin: 0 auto;
   text-align: center;
-  font-size: 120px;
-  line-height: 250px;
+  font-size: 23px;
+  line-height: 50px;
   background-color: lightcoral;
 }
 .restart {
   background-color: lavender;
   width: 150px;
-  font-size: 40px;
-  line-height: 250px;
+  font-size: 14px;
+  line-height: 50px;
   text-align: center;
 }
 .response {
-  height: calc(100% - 800px);
+  height: calc(100% - 215px);
   background-color: rgb(124, 125, 139);
-  padding-top: 40px;
+  padding-top: 20px;
 }
 .resTable {
-  width: 600px;
+  width: 95%;
   margin: 0 auto;
   text-align: center;
   border: solid rgb(189, 62, 93) 2px;
-  font-size: 40px;
+  font-size: 23px;
 }
 .thead {
   display: flex;
-  border: solid rgb(189, 62, 93) 2px;
+  border-bottom: solid rgb(189, 62, 93) 2px;
 }
 .thead div {
-  width: 100px;
+  width: 18%;
 }
 .thead div:first-child {
-  width: 400px;
-  padding-right: 80px;
+  width: 64%;
+  padding-right: 8%;
 }
 .record {
   display: flex;
@@ -61,52 +64,52 @@ main {
   border-top: solid whitesmoke 1px;
 }
 .record div {
-  width: 100px;
+  width: 18%;
 }
 #recordNum {
   display: flex;
-  width: 400px;
+  width: 64%;
 }
 #recordNum div {
-  width: 80px;
+  width: 22%;
 }
 
 .action {
-  height: 550px;
+  height: 180px;
   background-color: rgb(37, 172, 37);
 }
 .attack {
-  height: 250px;
+  height: 80px;
   display: flex;
 }
 .attacks {
   width: 80%;
-  height: 200px;
-  margin-top: 25px;
-  margin-left: 10px;
+  height: 70px;
+  margin-top: 3px;
+  margin-left: 2px;
   display: flex;
   background-color: hotpink;
   justify-content: space-around;
 }
 .attacks div {
   width: 19%;
-  margin: 15px 0;
+  margin: 10px 0;
   text-align: center;
-  font-size: 70px;
-  line-height: 170px;
+  font-size: 23px;
+  line-height: 50px;
   background-color: rgb(219, 202, 231);
 }
 .attack-button {
   width: 20%;
   text-align: center;
-  line-height: 200px;
+  line-height: 80px;
 }
 .attack-button button {
-  width: 50%;
+  width: 90%;
   height: 50px;
 }
 .numbers {
-  height: 300px;
+  height: 80px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -115,18 +118,28 @@ main {
   width: 19%;
   margin-bottom: 3px;
   background-color: darkolivegreen;
-  font-size: 70px;
+  font-size: 23px;
   text-align: center;
-  line-height: 140px;
+  line-height: 40px;
 }
 .numbers .active {
   background-color: lawngreen;
 }
 .numbers .selected {
-  outline: 10px solid khaki;
-  outline-offset: -10px;
+  outline: 3px solid khaki;
+  outline-offset: -3px;
 }
 footer {
   height: 35px;
   background-color: burlywood;
+}
+
+@media screen and (min-width: 420px) {
+  body {
+    width: 420px;
+    margin: 0 auto;
+  }
+  html{
+    background-color: rgb(34, 52, 70);
+  }
 }
