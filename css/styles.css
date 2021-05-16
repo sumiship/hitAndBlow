@@ -41,10 +41,12 @@ main {
 }
 .resTable {
   width: 95%;
+  height: 95%;
   margin: 0 auto;
   text-align: center;
   border: solid rgb(189, 62, 93) 2px;
   font-size: 23px;
+  overflow: scroll;
 }
 .thead {
   display: flex;
@@ -60,8 +62,8 @@ main {
 .record {
   display: flex;
 }
-.record:nth-child(n + 2) {
-  border-top: solid whitesmoke 1px;
+.record:nth-child(n + 1) {
+  border-bottom: solid whitesmoke 1px;
 }
 .record div {
   width: 18%;
@@ -139,7 +141,7 @@ footer {
     width: 420px;
     margin: 0 auto;
   }
-  html{
+  html {
     background-color: rgb(34, 52, 70);
   }
 }
