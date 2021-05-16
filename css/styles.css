@@ -46,7 +46,7 @@ main {
   text-align: center;
   border: solid rgb(189, 62, 93) 2px;
   font-size: 23px;
-  /* overflow: scroll; */
+  overflow: scroll;
 }
 .thead {
   display: flex;
