@@ -56,7 +56,7 @@
     methods: {
       putNum: function (num) {
         const del = this.attackNum.splice(num, 1, this.selectedNum);
-        if (del[0]) {
+        if (del[0] || del[0] == 0) {
           this.numList[del[0]].able = true;
         }
         this.numList[this.selectedNum].able = false;
