@@ -52,6 +52,7 @@
       answer: "",
       count: 0,
       res: [],
+      algoRes: [],
     },
     methods: {
       putNum: function (num) {
@@ -132,6 +133,7 @@
         this.isFinished = false;
         this.res = [];
         this.count = 0;
+        this.algoRes = [];
       },
       reset() {
         for (let i = 0; i < 10; i++) {
@@ -139,6 +141,60 @@
         }
         this.attackNum = [, , , ,];
         this.selectedNum = null;
+      },
+      algo() {
+        let source = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let source1, source2, source3, source4;
+        source1 = source.slice();
+        let p1, p2, p3, p4;
+        for (let i = 0; i < 10; i++) {
+          p1 = source1.splice(i, 1)[0];
+          // console.log("1: " + source1);
+          source2 = source1.slice();
+          // this.attackNum[0] = i
+          for (let p = 0; p < 9; p++) {
+            p2 = source2.splice(p, 1)[0];
+            // console.log("2: " + source2);
+            source3 = source2.slice();
+            for (let s = 0; s < 8; s++) {
+              p3 = source3.splice(s, 1)[0];
+              // console.log("3: " + source3);
+              source4 = source3.slice();
+              for (let t = 0; t < 7; t++) {
+                p4 = source4.splice(0, 1)[0];
+                // console.log("4: " + source4);
+                // console.log(p1, p2, p3, p4);
+                this.attackNum = [p1, p2, p3, p4].slice();
+                // console.log("p");
+                if (this.isAlgoDo(this.attackNum)) {
+                  // console.log("AA");
+                  let ans = this.judge(this.attackNum, this.answer);
+                  this.algoRes.push({ arr: this.attackNum, judge: ans });
+                  if (ans[0] === 4) this.isFinished = true;
+                  let text = this.attackNum;
+                  text[4] = ans[0];
+                  text[5] = ans[1];
+                  this.res.push(text);
+                }
+              }
+              source3 = source2.slice();
+              // console.log("check 3<-2: " + source2);
+            }
+            source2 = source1.slice();
+          }
+          source1 = source.slice();
+        }
+      },
+      isAlgoDo(attackArr) {
+        for (let i = 0; i < this.algoRes.length; i++) {
+          let resArr = this.judge(this.algoRes[i].arr, attackArr);
+          if (
+            resArr[0] != this.algoRes[i].judge[0] ||
+            resArr[1] != this.algoRes[i].judge[1]
+          )
+            return false;
+        }
+        return true;
       },
     },
     mounted: function () {

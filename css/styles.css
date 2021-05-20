@@ -19,6 +19,9 @@ main {
   background-color: darkmagenta;
   display: flex;
 }
+.algoButton {
+  width: 200px;
+}
 .putAnswer {
   width: 800px;
   margin: 0 auto;
