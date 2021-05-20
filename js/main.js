@@ -143,6 +143,8 @@
         this.selectedNum = null;
       },
       algo() {
+        for (let i = 0; i < this.numList.length; i++)
+          this.numList[i].able = true;
         let source = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         let source1, source2, source3, source4;
         source1 = source.slice();

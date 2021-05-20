@@ -20,7 +20,11 @@ main {
   display: flex;
 }
 .algoButton {
-  width: 200px;
+  background-color: lavender;
+  width: 150px;
+  font-size: 14px;
+  line-height: 50px;
+  text-align: center;
 }
 .putAnswer {
   width: 800px;
