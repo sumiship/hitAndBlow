@@ -120,7 +120,7 @@
         }
         text[4] = ans[0];
         text[5] = ans[1];
-        this.res[this.count - 1] = text;
+        this.res.push(text);
         // document.querySelector("ul").appendChild(li);
         this.reset();
       },
