@@ -143,6 +143,7 @@
         this.selectedNum = null;
       },
       algo() {
+        this.count = 0;
         for (let i = 0; i < this.numList.length; i++)
           this.numList[i].able = true;
         let source = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -173,6 +174,7 @@
                   let ans = this.judge(this.attackNum, this.answer);
                   this.algoRes.push({ arr: this.attackNum, judge: ans });
                   if (ans[0] === 4) this.isFinished = true;
+                  this.count++;
                   let text = this.attackNum;
                   text[4] = ans[0];
                   text[5] = ans[1];
@@ -186,6 +188,8 @@
           }
           source1 = source.slice();
         }
+        this.attackNum = [, , , ,];
+        // return [this.answer, this.count];
       },
       isAlgoDo(attackArr) {
         for (let i = 0; i < this.algoRes.length; i++) {
@@ -198,6 +202,17 @@
         }
         return true;
       },
+      // testAlgo() {
+      //   let algoAns;
+      //   let sum = 0;
+      //   for (let i = 0; i < 100; i++) {
+      //     algoAns = this.algo();
+      //     sum += algoAns[1];
+      //     console.log(algoAns);
+      //     this.restart();
+      //   }
+      //   console.log(sum / 100);
+      // },
     },
     mounted: function () {
       this.makeArr();
