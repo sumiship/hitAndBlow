@@ -26,9 +26,10 @@ main {
   font-size: 14px;
   line-height: 50px;
   text-align: center;
+  border: darkgrey 1px solid;
 }
 .putAnswer {
-  width: 800px;
+  width: 500px;
   margin: 0 auto;
   text-align: center;
   font-size: 23px;
