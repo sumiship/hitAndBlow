@@ -14,6 +14,7 @@ main {
   height: calc(100vh - 75px);
   background-color: cornsilk;
 }
+
 .answer {
   height: 50px;
   background-color: darkmagenta;
@@ -49,7 +50,7 @@ main {
 .hintView {
   position: absolute;
   width: 100%;
-  background-color:cornsilk;
+  background-color: cornsilk;
   text-align: center;
 }
 .hintView td {

@@ -19,9 +19,16 @@
         </div>
         <div v-if="isFinished" class="putAnswer">{{answer}}</div>
         <div class="algoButton" @click="hint()">hint</div>
+        <div class="algoButton" @click="description()">説明</div>
         <div class="restart" @click="restart()">restart</div>
       </div>
       <div class="response">
+        <div v-if="descriptionView" class="hintView">
+          <p>algo1: 順列探索で正解の可能性のある配列のうち最初の配列をattack</p>
+          <p>algo2: 順列探索で正解の可能性のある配列のうちランダムな配列をattack</p>
+          <p>algo3: 答えの各要素の数字が各数字である確率から点数を求め、点数の最も高い配列をattack</p>
+          <p>hint : 答えの各要素の数字が各数字である確率を表示する</p>
+        </div>
         <div v-if="hintView" class="hintView">
           <table>
             <thead>

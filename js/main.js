@@ -54,6 +54,7 @@
       res: [],
       algoRes: [],
       hintView: false,
+      descriptionView: false,
       hintArr: [
         [10, 10, 10, 10],
         [10, 10, 10, 10],
@@ -68,6 +69,9 @@
       ],
     },
     methods: {
+      description() {
+        this.descriptionView = !this.descriptionView;
+      },
       putNum: function (num) {
         const del = this.attackNum.splice(num, 1, this.selectedNum);
         if (del[0] || del[0] == 0) {
@@ -172,6 +176,27 @@
           this.hintArr[i].fill(10);
         }
       },
+      // testes() {
+      //   console.log("start");
+      //   let tesAns = [0, 0, 0];
+      //   let num = 1000;
+      //   for (let i = 0; i < num; i++) {
+      //     this.algo();
+      //     tesAns[0] += this.count;
+      //     this.restart();
+      //     this.algo2();
+      //     tesAns[1] += this.count;
+      //     this.restart();
+      //     this.algo3();
+      //     tesAns[2] += this.count;
+      //     this.restart();
+      //     this.makeArr();
+      //   }
+      //   for (let i = 0; i < 3; i++) {
+      //     tesAns[i] = Math.round((tesAns[i] / num) * 100) / 100;
+      //   }
+      //   console.log(tesAns);
+      // },
       reset() {
         for (let i = 0; i < 10; i++) {
           this.numList[i].able = true;
@@ -287,13 +312,14 @@
         this.hintView = !this.hintView;
       },
       algo3() {
+        this.count = 0;
         for (let i = 0; i < this.numList.length; i++)
           this.numList[i].able = true;
         let testArr = [];
         let testArrs = [];
         let evaluation;
         let eva;
-        while (!this.isFinished && this.count < 10) {
+        while (!this.isFinished) {
           evaluation = 0;
           testArrs = this.searchTalentArr();
           this.probability(testArrs);
