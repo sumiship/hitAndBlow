@@ -11,14 +11,39 @@
     <header>Hit and Blow</header>
     <main id="app">
       <div class="answer">
-        <div class="algoButton" @click="algo()">algo</div>
+        <div class="algoButton" @click="algo()">algo1</div>
+        <div class="algoButton" @click="algo2()">algo2</div>
+        <div class="algoButton" @click="algo3()">algo3</div>
         <div v-if="!isFinished" class="putAnswer" @click="viewAns()">
           答えを見る
         </div>
         <div v-if="isFinished" class="putAnswer">{{answer}}</div>
+        <div class="algoButton" @click="hint()">hint</div>
         <div class="restart" @click="restart()">restart</div>
       </div>
       <div class="response">
+        <div v-if="hintView" class="hintView">
+          <table>
+            <thead>
+              <tr>
+                <th>num\arr</th>
+                <th>○</th>
+                <th>○</th>
+                <th>○</th>
+                <th>○</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(hintRow, index) in hintArr" :key="index">
+                <td>{{index}}</td>
+                <td>{{hintRow[0]}}%</td>
+                <td>{{hintRow[1]}}%</td>
+                <td>{{hintRow[2]}}%</td>
+                <td>{{hintRow[3]}}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="resTable">
           <div class="thead">
             <div>数字</div>

@@ -53,6 +53,19 @@
       count: 0,
       res: [],
       algoRes: [],
+      hintView: false,
+      hintArr: [
+        [10, 10, 10, 10],
+        [10, 10, 10, 10],
+        [10, 10, 10, 10],
+        [10, 10, 10, 10],
+        [10, 10, 10, 10],
+        [10, 10, 10, 10],
+        [10, 10, 10, 10],
+        [10, 10, 10, 10],
+        [10, 10, 10, 10],
+        [10, 10, 10, 10],
+      ],
     },
     methods: {
       putNum: function (num) {
@@ -101,6 +114,7 @@
         return [hit, blow];
       },
       check: function () {
+        let testArrs = [];
         if (
           this.attackNum[0] == undefined ||
           this.attackNum[1] == undefined ||
@@ -112,17 +126,37 @@
         const text = this.attackNum;
         // const li = document.createElement("li");
         const ans = this.judge(this.answer, text);
+        this.algoRes.push({ arr: text, judge: ans });
+        testArrs = this.searchTalentArr();
+        this.probability(testArrs);
         if (ans[0] === 4) {
           this.isFinished = true;
-        } else {
-          // li.textContent =
-          //   text + "<br>" + `${text}  　hit:${ans[0]} blow:${ans[1]}`;
         }
         text[4] = ans[0];
         text[5] = ans[1];
         this.res.push(text);
         // document.querySelector("ul").appendChild(li);
         this.reset();
+      },
+      probability(arrs) {
+        let length = arrs.length;
+        for (let i = 0; i < 10; i++) {
+          this.hintArr[i].fill(0);
+        }
+        for (let i = 0; i < length; i++) {
+          for (let j = 0; j < 4; j++) {
+            this.hintArr[arrs[i][j]][j]++;
+          }
+        }
+        for (let i = 0; i < 10; i++) {
+          for (let j = 0; j < 4; j++) {
+            this.hintArr[i].splice(
+              j,
+              1,
+              Math.round((this.hintArr[i][j] / length) * 10000) / 100
+            );
+          }
+        }
       },
       viewAns: function () {
         this.isFinished = true;
@@ -134,6 +168,9 @@
         this.res = [];
         this.count = 0;
         this.algoRes = [];
+        for (let i = 0; i < 10; i++) {
+          this.hintArr[i].fill(10);
+        }
       },
       reset() {
         for (let i = 0; i < 10; i++) {
@@ -152,25 +189,17 @@
         let p1, p2, p3, p4;
         for (let i = 0; i < 10; i++) {
           p1 = source1.splice(i, 1)[0];
-          // console.log("1: " + source1);
           source2 = source1.slice();
-          // this.attackNum[0] = i
           for (let p = 0; p < 9; p++) {
             p2 = source2.splice(p, 1)[0];
-            // console.log("2: " + source2);
             source3 = source2.slice();
             for (let s = 0; s < 8; s++) {
               p3 = source3.splice(s, 1)[0];
-              // console.log("3: " + source3);
               source4 = source3.slice();
               for (let t = 0; t < 7; t++) {
                 p4 = source4.splice(0, 1)[0];
-                // console.log("4: " + source4);
-                // console.log(p1, p2, p3, p4);
                 this.attackNum = [p1, p2, p3, p4].slice();
-                // console.log("p");
                 if (this.isAlgoDo(this.attackNum)) {
-                  // console.log("AA");
                   let ans = this.judge(this.attackNum, this.answer);
                   this.algoRes.push({ arr: this.attackNum, judge: ans });
                   if (ans[0] === 4) this.isFinished = true;
@@ -182,14 +211,12 @@
                 }
               }
               source3 = source2.slice();
-              // console.log("check 3<-2: " + source2);
             }
             source2 = source1.slice();
           }
           source1 = source.slice();
         }
         this.attackNum = [, , , ,];
-        // return [this.answer, this.count];
       },
       isAlgoDo(attackArr) {
         for (let i = 0; i < this.algoRes.length; i++) {
@@ -202,17 +229,101 @@
         }
         return true;
       },
-      // testAlgo() {
-      //   let algoAns;
-      //   let sum = 0;
-      //   for (let i = 0; i < 100; i++) {
-      //     algoAns = this.algo();
-      //     sum += algoAns[1];
-      //     console.log(algoAns);
-      //     this.restart();
-      //   }
-      //   console.log(sum / 100);
-      // },
+      searchTalentArr() {
+        let testArrs = [];
+        let source = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let source1, source2, source3, source4;
+        let p1, p2, p3, p4;
+        source1 = source.slice();
+        for (let i = 0; i < 10; i++) {
+          p1 = source1.splice(i, 1)[0];
+          source2 = source1.slice();
+          for (let p = 0; p < 9; p++) {
+            p2 = source2.splice(p, 1)[0];
+            source3 = source2.slice();
+            for (let s = 0; s < 8; s++) {
+              p3 = source3.splice(s, 1)[0];
+              source4 = source3.slice();
+              for (let t = 0; t < 7; t++) {
+                p4 = source4.splice(0, 1)[0];
+                this.attackNum = [p1, p2, p3, p4];
+                if (this.isAlgoDo(this.attackNum)) {
+                  testArrs.push(this.attackNum);
+                }
+              }
+              source3 = source2.slice();
+            }
+            source2 = source1.slice();
+          }
+          source1 = source.slice();
+        }
+        return testArrs;
+      },
+      algo2() {
+        let testArr = [];
+        let testArrs = [];
+        this.count = 0;
+        for (let i = 0; i < this.numList.length; i++)
+          this.numList[i].able = true;
+        while (!this.isFinished) {
+          testArrs = this.searchTalentArr();
+          testArr = testArrs.splice(
+            Math.floor(Math.random() * testArrs.length),
+            1
+          )[0];
+          let ans = this.judge(testArr, this.answer);
+          this.algoRes.push({ arr: testArr, judge: ans });
+          if (ans[0] === 4) this.isFinished = true;
+          this.count++;
+          let text = testArr;
+          text[4] = ans[0];
+          text[5] = ans[1];
+          this.res.push(text);
+          this.attackNum = [, , , ,];
+          testArrs = [];
+        }
+      },
+      hint() {
+        this.hintView = !this.hintView;
+      },
+      algo3() {
+        for (let i = 0; i < this.numList.length; i++)
+          this.numList[i].able = true;
+        let testArr = [];
+        let testArrs = [];
+        let evaluation;
+        let eva;
+        while (!this.isFinished && this.count < 10) {
+          evaluation = 0;
+          testArrs = this.searchTalentArr();
+          this.probability(testArrs);
+          let length = testArrs.length;
+          for (let i = 0; i < length; i++) {
+            eva = 0;
+            for (let j = 0; j < 4; j++) {
+              eva += this.hintArr[testArrs[i][j]][j];
+            }
+            if (eva > evaluation) {
+              testArr = testArrs[i];
+              evaluation = eva;
+              // if (this.count > 1) console.log(testArr + ":eva->" + eva);
+            }
+            // if (i == 0 && j == 1) console.log(this.hintArr);
+          }
+          // console.log("--------");
+          let ans = this.judge(testArr, this.answer);
+          this.algoRes.push({ arr: testArr, judge: ans });
+          if (ans[0] === 4) this.isFinished = true;
+          this.count++;
+          let text = testArr;
+          text[4] = ans[0];
+          text[5] = ans[1];
+          this.res.push(text);
+          // console.log(this.hintArr);
+          this.attackNum = [, , , ,];
+          testArrs = [];
+        }
+      },
     },
     mounted: function () {
       this.makeArr();

@@ -46,6 +46,15 @@ main {
   background-color: rgb(124, 125, 139);
   padding-top: 20px;
 }
+.hintView {
+  position: absolute;
+  width: 100%;
+  background-color:cornsilk;
+  text-align: center;
+}
+.hintView td {
+  width: 90px;
+}
 .resTable {
   width: 95%;
   height: 95%;
@@ -150,5 +159,9 @@ footer {
   }
   html {
     background-color: rgb(34, 52, 70);
+  }
+  .hintView {
+    width: 400px;
+    margin: 0 10px;
   }
 }
